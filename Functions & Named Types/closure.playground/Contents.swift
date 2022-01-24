@@ -31,3 +31,18 @@ printResult(
     },
     3, 10
 )
+
+
+// MARK: - Challenge
+
+// function
+func calculateFullName(firstName: String, lastName: String?) -> String {
+    firstName + " " + (lastName ?? "")
+}
+
+// closure
+var calculateFullNameClosure = { (firstName: String, lastName: String) -> String in
+    firstName + " " + lastName
+}
+
+calculateFullNameClosure("Tomo", "Shimizu")

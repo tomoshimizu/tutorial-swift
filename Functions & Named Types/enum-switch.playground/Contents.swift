@@ -50,3 +50,45 @@ func getLocation(movements: [Direction]) -> (x: Int, y: Int) {
 }
 
 getLocation(movements: [.north, .west, .west, .south, .south, .west, .east, .south])
+
+
+// Associated Values
+
+enum TwoDimensionalPoint {
+    case origin
+    case onXAxis(Double)
+    case onYAxis(Double)
+    case noZeroCoordinate(x: Double, y: Double)
+}
+
+let coordinates = (1.0, 3.0)
+let twoDimensionalPoint: TwoDimensionalPoint
+
+switch coordinates {
+case (0, 0):
+    twoDimensionalPoint = .origin
+case (_, 0):
+    twoDimensionalPoint = .onXAxis(coordinates.0)
+case (0, _):
+    twoDimensionalPoint = .onYAxis(coordinates.1)
+default:
+    twoDimensionalPoint = .noZeroCoordinate(x: coordinates.0, y: coordinates.1)
+}
+
+func getValues(for point: TwoDimensionalPoint) -> (x: Double, y: Double) {
+    switch point {
+    case .origin:
+        return (0, 0)
+    case .onXAxis(let x):
+        return (x, 0)
+    case .onYAxis(let y):
+        return (0, y)
+    case let .noZeroCoordinate(x: x, y: y):
+        return (x, y)
+    }
+}
+
+getValues(for: .origin)
+getValues(for: .onXAxis(6.11))
+getValues(for: .onYAxis(-2.5))
+getValues(for: .noZeroCoordinate(x: 9, y: 20))

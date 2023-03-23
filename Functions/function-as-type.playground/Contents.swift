@@ -20,4 +20,3 @@ func hasAnyMatches(list: [Int], condition: (Int) -> Bool) -> Bool {
 var numbers = [20, 19, 7, 12]
 
 hasAnyMatches(list: numbers, condition: betweenOneAndTen)
-
